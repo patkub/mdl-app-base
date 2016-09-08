@@ -54,7 +54,10 @@ module.exports = function(grunt) {
     },
     ngtemplates: {
         dist: {
-            src: 'assets/templates/*.html',
+            src: [
+              'assets/templates/*.html',
+              'assets/pages/*.html'
+            ],
             dest: './dist/assets/templates.min.js',
             options: {
                 module: 'ngTemplates',
@@ -77,7 +80,6 @@ module.exports = function(grunt) {
         files: [
           { src: 'assets/app.js', dest: 'dist/' },
           { src: 'assets/images/**/*', dest: 'dist/' },
-          { src: 'assets/pages/*.*', dest: 'dist/' },
           { src: 'bower_components/angular-route/angular-route.min.js', dest: 'dist/' },
           { src: 'bower_components/font-awesome/**/*', dest: 'dist/' },
         ]
@@ -89,15 +91,17 @@ module.exports = function(grunt) {
         tasks: ['targethtml']
       },
       code: {
-        files: ['<%= concat.dist.src %>', '<%= ngtemplates.dist.dest %>'],
+        files: ['<%= concat.dist.src %>'],
         tasks: ['concat', 'cssmin', 'uglify']
+      },
+      templates: {
+        files: ['<%= ngtemplates.dist.src %>'],
+        tasks: ['ngtemplates']
       },
       files: {
         files: [
           'assets/app.js',
           'assets/images/**/*',
-          'assets/pages/*.*',
-          'assets/templates/*.*',
         ],
         tasks: ['copy']
       }
