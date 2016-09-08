@@ -47,12 +47,14 @@ exampleApp.controller('demoController', function($scope) {
 exampleApp.directive('demo', function () {
   function link(scope, element, attrs) {
     // register DOM listeners and update DOM here
-    scope.test = "World!"
   }
 
   return {
     restrict: 'E',
     templateUrl: 'assets/templates/demo.tmpl.html',
+    scope: {
+      test: '@'
+    },
     link: link
   }
 })
