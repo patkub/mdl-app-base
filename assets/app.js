@@ -1,4 +1,4 @@
-var exampleApp = angular.module('exampleApp', ['ngRoute']);
+var exampleApp = angular.module('exampleApp', ['ngRoute', 'ngTemplates']);
 
 // controller for the main app
 exampleApp.controller('appCtrl', function($scope, $location) {

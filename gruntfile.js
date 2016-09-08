@@ -11,7 +11,7 @@ module.exports = function(grunt) {
           './bower_components/material-design-lite/material.min.js',
           './bower_components/angular/angular.min.js'
         ],
-        dest: 'dist/assets/vendor.min.js'
+        dest: './dist/assets/vendor.min.js'
       }
     },
     cssmin: {
@@ -29,7 +29,8 @@ module.exports = function(grunt) {
     uglify: {
       dist: {
         files: {
-          './dist/assets/vendor.min.js': ['<%= concat.dist.dest %>']
+          '<%= concat.dist.dest %>': ['<%= concat.dist.dest %>'],
+          '<%= ngtemplates.dist.dest %>': ['<%= ngtemplates.dist.dest %>']
         }
       }
     },
@@ -47,36 +48,58 @@ module.exports = function(grunt) {
           collapseWhitespace: true
         },
         files: {
-          'dist/index.html': 'dist/index.html'
+          './dist/index.html': './dist/index.html'
         }
       }
     },
-    watch: {
-      code: {
-        files: ['<%= concat.dist.src %>'],
-        tasks: ['concat', 'cssmin', 'uglify']
-      },
-      files: {
-        files: [
-          'index.html.build',
-          'assets/app.js',
-          'assets/images/**/*',
-          'assets/templates/*.*',
-        ],
-        tasks: ['copy']
-      }
+    ngtemplates: {
+        dist: {
+            src: 'assets/templates/*.html',
+            dest: './dist/assets/templates.min.js',
+            options: {
+                module: 'ngTemplates',
+                htmlmin: {
+                  collapseBooleanAttributes: true,
+                  collapseWhitespace: true,
+                  removeAttributeQuotes: true,
+                  removeComments: true,
+                  removeEmptyAttributes: true,
+                  removeRedundantAttributes: true,
+                  removeScriptTypeAttributes: true,
+                  removeStyleLinkTypeAttributes: true,
+                },
+                standalone: true
+            }
+        }
     },
     copy: {
       main: {
         files: [
           { src: 'assets/app.js', dest: 'dist/' },
-          { src: 'assets/files/*.*', dest: 'dist/' },
           { src: 'assets/images/**/*', dest: 'dist/' },
           { src: 'assets/pages/*.*', dest: 'dist/' },
-          { src: 'assets/templates/*.*', dest: 'dist/' },
           { src: 'bower_components/angular-route/angular-route.min.js', dest: 'dist/' },
           { src: 'bower_components/font-awesome/**/*', dest: 'dist/' },
         ]
+      }
+    },
+    watch: {
+      html: {
+        files: ['index.html'],
+        tasks: ['targethtml']
+      },
+      code: {
+        files: ['<%= concat.dist.src %>', '<%= ngtemplates.dist.dest %>'],
+        tasks: ['concat', 'cssmin', 'uglify']
+      },
+      files: {
+        files: [
+          'assets/app.js',
+          'assets/images/**/*',
+          'assets/pages/*.*',
+          'assets/templates/*.*',
+        ],
+        tasks: ['copy']
       }
     },
     connect: {
@@ -98,7 +121,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-targethtml');
+  grunt.loadNpmTasks('grunt-angular-templates');
 
-  grunt.registerTask('default', ['targethtml', 'htmlmin', 'concat', 'cssmin', 'uglify', 'copy', 'connect', 'watch']);
-  grunt.registerTask('deploy', ['targethtml', 'htmlmin', 'concat', 'cssmin', 'uglify', 'copy']);
+  grunt.registerTask('default', ['targethtml', 'htmlmin', 'ngtemplates', 'concat', 'cssmin', 'uglify', 'copy', 'connect', 'watch']);
+  grunt.registerTask('deploy', ['targethtml', 'htmlmin', 'ngtemplates', 'concat', 'cssmin', 'uglify', 'copy']);
 };
