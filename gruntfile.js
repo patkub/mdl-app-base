@@ -33,6 +33,24 @@ module.exports = function(grunt) {
         }
       }
     },
+    targethtml: {
+      dist: {
+        files: {
+          './dist/index.html': 'index.html'
+        }
+      }
+    },
+    htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {
+          'dist/index.html': 'dist/index.html'
+        }
+      }
+    },
     watch: {
       code: {
         files: ['<%= concat.dist.src %>'],
@@ -51,7 +69,6 @@ module.exports = function(grunt) {
     copy: {
       main: {
         files: [
-          { src: 'index.html.build', dest: 'dist/index.html' },
           { src: 'assets/app.js', dest: 'dist/' },
           { src: 'assets/files/*.*', dest: 'dist/' },
           { src: 'assets/images/**/*', dest: 'dist/' },
@@ -80,7 +97,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-targethtml');
 
-  grunt.registerTask('default', ['concat', 'cssmin', 'uglify', 'copy', 'connect', 'watch']);
-  grunt.registerTask('deploy', ['concat', 'cssmin', 'uglify', 'copy']);
+  grunt.registerTask('default', ['targethtml', 'htmlmin', 'concat', 'cssmin', 'uglify', 'copy', 'connect', 'watch']);
+  grunt.registerTask('deploy', ['targethtml', 'htmlmin', 'concat', 'cssmin', 'uglify', 'copy']);
 };
