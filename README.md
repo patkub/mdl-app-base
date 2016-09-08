@@ -1,17 +1,14 @@
-Antuple Website
-===============
+MDL Portfolio App Base
+======================
 
-Personal Website  
-www.antuple.net
-
-A Material Design Lite webapp backed by AngularJS.
+Material Design Lite portfolio template webapp backed by AngularJS.
 
 ### Download / Clone:
 
 Clone the repo using Git:
 
 ```bash
-git clone https://gitlab.com/patkub/antuple-website.git
+git clone https://gitlab.com/patkub/mdl-portfolio-app-base.git
 ```
 
 ### Local Setup:
