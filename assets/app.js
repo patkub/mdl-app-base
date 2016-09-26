@@ -7,6 +7,12 @@ exampleApp.controller('appCtrl', function($scope, $location) {
 
   // current path
   $scope.location = $location;
+
+  // close drawer
+  $scope.closeDrawer = function() {
+    document.getElementsByClassName('mdl-layout__drawer')[0].classList.remove('is-visible');
+    document.getElementsByClassName('mdl-layout__obfuscator')[0].classList.remove('is-visible');
+  }
 });
 
 // page routing

@@ -70,8 +70,8 @@
       <!-- drawer -->
       <div class="mdl-layout__drawer mdl-layout--small-screen-only">
         <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-          <a class="mdl-navigation__link mdl-color-text--blue-900" href="/#/home" ng-class="location.path() == '/home' ? 'is-active' : ''">Home</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-900" href="/#/demo" ng-class="location.path() == '/demo' ? 'is-active' : ''">Demo</a>
+          <a class="mdl-navigation__link mdl-color-text--blue-900" href="/#/home" ng-class="location.path() == '/home' ? 'is-active' : ''" ng-click="closeDrawer();">Home</a>
+          <a class="mdl-navigation__link mdl-color-text--blue-900" href="/#/demo" ng-class="location.path() == '/demo' ? 'is-active' : ''" ng-click="closeDrawer();">Demo</a>
         </nav>
       </div>
 
