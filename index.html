@@ -48,52 +48,36 @@
 
 <body ng-app="exampleApp" ng-cloak>
   <div ng-controller="appCtrl" ng-cloak>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
-      <!-- header -->
-      <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
-        <div class="mdl-layout__header-row portfolio-logo-row">
-          <span class="mdl-layout__title">
-              <div class="portfolio-logo"></div>
-              <span class="mdl-layout__title mdl-color-text--blue-900">App Title</span>
-          </span>
-        </div>
-
-        <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
-          <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-            <a class="mdl-navigation__link mdl-color-text--blue-900" href="/#/home" ng-class="location.path() == '/home' ? 'is-active' : ''">Home</a>
-            <a class="mdl-navigation__link mdl-color-text--blue-900" href="/#/demo" ng-class="location.path() == '/demo' ? 'is-active' : ''">Demo</a>
-          </nav>
+    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Material Design Lite</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Enter your query...</label>
+            </div>
+          </div>
         </div>
       </header>
-
-      <!-- drawer -->
-      <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-          <a class="mdl-navigation__link mdl-color-text--blue-900" href="/#/home" ng-class="location.path() == '/home' ? 'is-active' : ''" ng-click="closeDrawer();">Home</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-900" href="/#/demo" ng-class="location.path() == '/demo' ? 'is-active' : ''" ng-click="closeDrawer();">Demo</a>
-        </nav>
-      </div>
-
-      <!-- content -->
-      <main class="mdl-layout__content">
-        <div class="mdl-grid portfolio-max-width">
-          <div ng-view></div>
-        </div>
+      <div class="demo-ribbon"></div>
+      <main class="demo-main mdl-layout__content">
+        <div ng-view></div>
+        <footer class="demo-footer mdl-mini-footer">
+          <div class="mdl-mini-footer--left-section">
+            <ul class="mdl-mini-footer--link-list">
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Privacy and Terms</a></li>
+              <li><a href="#">User Agreement</a></li>
+            </ul>
+          </div>
+        </footer>
       </main>
-
-      <!-- footer -->
-      <footer class="mdl-mini-footer">
-          <div class="mdl-mini-footer__left-section">
-              <div class="mdl-logo">Example angular app</div>
-          </div>
-          <div class="mdl-mini-footer__right-section">
-              <ul class="mdl-mini-footer__link-list">
-                  <li><a href="#">Help</a></li>
-                  <li><a href="#">Privacy & Terms</a></li>
-              </ul>
-          </div>
-      </footer>
     </div>
   </div>
 </body>
