@@ -1,5 +1,5 @@
-MDL Portfolio App Base
-======================
+MDL App Base
+============
 
 Material Design Lite portfolio template starter kit webapp backed by AngularJS.
 
