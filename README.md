@@ -1,7 +1,7 @@
 MDL Portfolio App Base
 ======================
 
-Material Design Lite portfolio template starter kit webapp backed by AngularJS.
+Material Design Lite article template starter kit webapp backed by AngularJS.
 
 ### Download / Clone:
 
@@ -9,6 +9,7 @@ Clone the repo using Git:
 
 ```bash
 git clone https://gitlab.com/patkub/mdl-app-base.git
+git checkout article
 ```
 
 ### Local Setup:
