@@ -9,6 +9,8 @@ Clone the repo using Git:
 
 ```bash
 git clone https://gitlab.com/patkub/mdl-app-base.git
+git checkout portfolio
+git checkout article
 ```
 
 ### Local Setup:
