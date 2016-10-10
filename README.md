@@ -8,7 +8,9 @@ Material Design Lite portfolio template starter kit webapp backed by AngularJS.
 Clone the repo using Git:
 
 ```bash
-git clone https://gitlab.com/patkub/mdl-portfolio-app-base.git
+git clone https://gitlab.com/patkub/mdl-app-base.git
+git checkout portfolio
+git checkout article
 ```
 
 ### Local Setup:
